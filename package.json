@@ -36,10 +36,12 @@
     "duck": "^0.1.12",
     "eslint": "2.13.1",
     "hamjest": "^4.0.1",
+    "http-server": "^14.1.1",
     "mocha": "~2.2.5",
     "temp": "^0.9.4",
     "typescript": "^5.0.4",
-    "uglify-js": "~2.4.8"
+    "uglify-js": "~2.4.8",
+    "watchify": "^4.0.0"
   },
   "browser": {
     "./lib/unzip.js": "./browser/unzip.js",
@@ -50,9 +52,11 @@
   },
   "scripts": {
     "pretest": "eslint lib test",
-    "test": "mocha 'test/**/*.tests.js'",
+    "test": "mocha test/**/*.tests.js",
     "check-typescript": "tsc --noEmit lib/index.d.ts",
-    "prepare": "make mammoth.browser.min.js"
+    "dev": "node bin/dev",
+    "build:browser": "browserify lib/index.js --standalone mammoth > mammoth.browser.js",
+    "build": "npm run build:browser && uglifyjs mammoth.browser.js > mammoth.browser.min.js"
   },
   "license": "BSD-2-Clause",
   "engines": {
