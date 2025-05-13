@@ -34,6 +34,7 @@ interface Options {
     ignoreEmptyParagraphs?: boolean;
     idPrefix?: string;
     transformDocument?: (element: any) => any;
+    transformConvertRun?:(run: any) => any;
 }
 
 interface ImageConverter {
